@@ -6,6 +6,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.app.Application;
@@ -24,12 +26,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final Context application =this;
 
+        RecyclerView recyclerView =findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager( new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+
+        NoteAdapter noteAdapter = new NoteAdapter();
+
+        recyclerView.setAdapter(noteAdapter);
 
         noteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
         noteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
             @Override
             public void onChanged(List<Note> notes) {
-                Toast.makeText(MainActivity.this,"Created onchanged",Toast.LENGTH_LONG).show();
+                noteAdapter.setNotes(notes);
             }
         });
 
