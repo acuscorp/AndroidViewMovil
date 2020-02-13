@@ -24,7 +24,7 @@
         android:inputType="textMultiLine" />
 
     <EditText
-        android:id="@+id/et_"
+        android:id="@+id/et_priority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Priority:"

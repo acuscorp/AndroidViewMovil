@@ -3,6 +3,7 @@ package com.example.mvvm;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,6 +14,10 @@ import android.widget.NumberPicker;
 import android.widget.Toast;
 
 public class AddNoteActivity extends AppCompatActivity {
+    public static final String EXTRA_TITILE = "com.example.mvvm.EXTRA_TITILE";
+    public static final String EXTRA_DESCRIPTION = "com.example.mvvm.EXTRA_DESCRIPTION";
+    public static final String EXTRA_PRIORITY = "com.example.mvvm.EXTRA_PRIORITY";
+
     private EditText editTextTitle, editTextDescription;
     private NumberPicker numberPickerPriority;
     @Override
@@ -57,5 +62,12 @@ public class AddNoteActivity extends AppCompatActivity {
             Toast.makeText(this,"Please inser a title and descriptio",Toast.LENGTH_LONG).show();
             return;
         }
+
+        Intent data = new Intent();
+        data.putExtra(EXTRA_TITILE,title);
+        data.putExtra(EXTRA_DESCRIPTION,description);
+        data.putExtra(EXTRA_PRIORITY,priority);
+        setResult(RESULT_OK,data);
+        finish();
     }
 }
