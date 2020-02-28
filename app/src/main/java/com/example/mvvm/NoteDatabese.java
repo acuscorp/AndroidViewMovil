@@ -26,6 +26,7 @@ public abstract class NoteDatabese extends RoomDatabase {
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+
     public static synchronized NoteDatabese getInstance(Context context){
         if(instance==null){
             instance = Room.databaseBuilder(context.getApplicationContext(),

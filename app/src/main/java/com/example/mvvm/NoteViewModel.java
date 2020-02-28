@@ -23,6 +23,7 @@ public class NoteViewModel extends AndroidViewModel {
         super(application);
         repository = new NoteRepository(application);
         allNotes = repository.getAllNotes();
+
     }
     public void insert(Note note){
         repository.insert(note);
