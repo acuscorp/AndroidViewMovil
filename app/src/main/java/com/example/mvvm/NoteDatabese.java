@@ -22,7 +22,7 @@ import java.util.concurrent.Executors;
 public abstract class NoteDatabese extends RoomDatabase {
 
     public static volatile NoteDatabese instance;
-    public abstract NoteDao noteDao();
+    public abstract NoteDao noteDao();m
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
